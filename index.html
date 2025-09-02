@@ -3,51 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Web Page Assignment</title>
+  <title>Interactive Web Pages</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Interactive Web Page </h1>
-    <nav>
-      <button id="toggle-theme">Toggle Light/Dark Mode</button>
-      <button id="counter-btn">Click Counter</button>
-    </nav>
-  </header>
+  <h1>Interactive Web Pages with JavaScript</h1>
 
-  <main>
-    <section>
-      <h2>Collapsible FAQ</h2>
-      <div class="faq">
-        <button class="faq-question">What is JavaScript?</button>
-        <p class="faq-answer">JavaScript is a versatile programming language used for web development.</p>
+  <!-- Part 1: Event Handling -->
+  <section>
+    <h2>Part 1: Event Handling</h2>
+    <button id="toggleModeBtn">Toggle Light/Dark Mode</button>
+    <p id="hoverText">Hover over me!</p>
+  </section>
+
+  <!--Part 2: Interactive Features -->
+  <section>
+    <h2>Part 2: Interactive Features</h2>
+
+    <!-- Feature 1: Counter Game -->
+    <div>
+      <h3>Counter Game</h3>
+      <p>Click the button to increase the counter:</p>
+      <button id="incrementBtn">Increment</button>
+      <p>Count: <span id="counter">0</span></p>
+    </div>
+
+    <!-- Feature 2: Collapsible FAQ Section -->
+    <div>
+      <h3>Collapsible FAQ</h3>
+      <button id="faqToggleBtn">Toggle FAQ</button>
+      <div id="faqContent" class="hidden">
+        <p><strong>Q:</strong> What is JavaScript?</p>
+        <p><strong>A:</strong> JavaScript is a programming language that adds interactivity to websites.</p>
       </div>
-      <div class="faq">
-        <button class="faq-question">Why learn JavaScript?</button>
-        <p class="faq-answer">Because it makes web pages interactive and dynamic.</p>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section>
-      <h2>Sample Form</h2>
-      <form id="sample-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <span class="error" id="name-error"></span><br><br>
+  <!--Part 3: Form Validation -->
+  <section>
+    <h2>Part 3: Form Validation</h2>
+    <form id="userForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+      <small id="nameError" class="error"></small>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <span class="error" id="email-error"></span><br><br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+      <small id="emailError" class="error"></small>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <span class="error" id="password-error"></span><br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
+      <small id="passwordError" class="error"></small>
 
-        <button type="submit">Submit</button>
-        <p id="form-success"></p>
-      </form>
-    </section>
-  </main><br><br><br>
+      <button type="submit">Submit</button>
+    </form>
+    <p id="formResult"></p>
+  </section>
 
   <script src="script.js"></script>
 </body>

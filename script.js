@@ -1,58 +1,67 @@
-// Toggle light/dark mode
-document.getElementById('toggle-theme').addEventListener('click', () => {
+// Part 1: Event Handling
+// Feature 1: Toggle Light/Dark Mode
+document.getElementById('toggleModeBtn').addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
 });
 
-// Counter button
-let counter = 0;
-document.getElementById('counter-btn').addEventListener('click', () => {
-  counter++;
-  alert(`Button clicked ${counter} times!`);
+// Feature 2: Hover Effect
+const hoverText = document.getElementById('hoverText');
+hoverText.addEventListener('mouseover', () => {
+  hoverText.textContent = 'You hovered over me!';
+});
+hoverText.addEventListener('mouseout', () => {
+  hoverText.textContent = 'Hover over me!';
 });
 
-// FAQ collapsible section
-document.querySelectorAll('.faq-question').forEach(button => {
-  button.addEventListener('click', () => {
-    const answer = button.nextElementSibling;
-    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-  });
+// Part 2: Interactive Features
+// Feature 1: Counter Game
+let count = 0;
+document.getElementById('incrementBtn').addEventListener('click', () => {
+  count++;
+  document.getElementById('counter').textContent = count;
 });
 
-// Form validation
-document.getElementById('sample-form').addEventListener('submit', function(e) {
-  e.preventDefault();
+// Feature 2: Collapsible FAQ Section
+document.getElementById('faqToggleBtn').addEventListener('click', () => {
+  const faqContent = document.getElementById('faqContent');
+  faqContent.classList.toggle('hidden');
+});
 
-  let valid = true;
+//Part 3: Form Validation
+document.getElementById('userForm').addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent form submission
 
-  // Name validation
+  // Clear previous error messages
+  document.getElementById('nameError').textContent = '';
+  document.getElementById('emailError').textContent = '';
+  document.getElementById('passwordError').textContent = '';
+
+  let isValid = true;
+
+  // Validate Name
   const name = document.getElementById('name').value.trim();
-  if (name.length < 3) {
-    valid = false;
-    document.getElementById('name-error').textContent = 'Name must be at least 3 characters.';
-  } else {
-    document.getElementById('name-error').textContent = '';
+  if (!name) {
+    document.getElementById('nameError').textContent = 'Name is required.';
+    isValid = false;
   }
 
-  // Email validation
+  // Validate Email
   const email = document.getElementById('email').value.trim();
-  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  if (!emailPattern.test(email)) {
-    valid = false;
-    document.getElementById('email-error').textContent = 'Enter a valid email address.';
-  } else {
-    document.getElementById('email-error').textContent = '';
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    document.getElementById('emailError').textContent = 'Please enter a valid email.';
+    isValid = false;
   }
 
-  // Password validation
-  const password = document.getElementById('password').value;
+  // Validate Password
+  const password = document.getElementById('password').value.trim();
   if (password.length < 6) {
-    valid = false;
-    document.getElementById('password-error').textContent = 'Password must be at least 6 characters.';
-  } else {
-    document.getElementById('password-error').textContent = '';
+    document.getElementById('passwordError').textContent = 'Password must be at least 6 characters.';
+    isValid = false;
   }
 
-  if (valid) {
-    document.getElementById('form-success').textContent = 'Form submitted successfully!';
+  // Show success message if all fields are valid
+  if (isValid) {
+    document.getElementById('formResult').textContent = 'Form submitted successfully!';
   }
 });
