@@ -1,67 +1,83 @@
-// Part 1: Event Handling
-// Feature 1: Toggle Light/Dark Mode
-document.getElementById('toggleModeBtn').addEventListener('click', () => {
+// Part 1: Event Handling - Change Background Color
+const changeBackgroundButton = document.getElementById('changeBackground');
+
+changeBackgroundButton.addEventListener('click', () => {
+  // Generate a random color in RGB format
+  const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+  
+  // Change the background color of the body
+  document.body.style.backgroundColor = randomColor;
+});
+
+// Part 2: Feature 1 - Light/Dark Mode Toggle
+const themeToggleButton = document.getElementById('themeToggle');
+
+themeToggleButton.addEventListener('click', () => {
+  // Toggle a 'dark-mode' class on the body
   document.body.classList.toggle('dark-mode');
 });
 
-// Feature 2: Hover Effect
-const hoverText = document.getElementById('hoverText');
-hoverText.addEventListener('mouseover', () => {
-  hoverText.textContent = 'You hovered over me!';
-});
-hoverText.addEventListener('mouseout', () => {
-  hoverText.textContent = 'Hover over me!';
+// Part 2: Feature 2 - Collapsible FAQ Section
+const faqQuestions = document.querySelectorAll('.faq-question');
+
+faqQuestions.forEach(question => {
+  question.addEventListener('click', () => {
+    // Find the corresponding answer
+    const answer = question.nextElementSibling;
+
+    // Toggle visibility of the answer
+    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+  });
 });
 
-// Part 2: Interactive Features
-// Feature 1: Counter Game
-let count = 0;
-document.getElementById('incrementBtn').addEventListener('click', () => {
-  count++;
-  document.getElementById('counter').textContent = count;
-});
+// Part 3: Form Validation
+const form = document.getElementById('signup-form');
 
-// Feature 2: Collapsible FAQ Section
-document.getElementById('faqToggleBtn').addEventListener('click', () => {
-  const faqContent = document.getElementById('faqContent');
-  faqContent.classList.toggle('hidden');
-});
-
-//Part 3: Form Validation
-document.getElementById('userForm').addEventListener('submit', (event) => {
+form.addEventListener('submit', (event) => {
   event.preventDefault(); // Prevent form submission
 
   // Clear previous error messages
-  document.getElementById('nameError').textContent = '';
-  document.getElementById('emailError').textContent = '';
-  document.getElementById('passwordError').textContent = '';
+  clearErrors();
 
+  // Validate each field
   let isValid = true;
 
-  // Validate Name
+  // Name validation
   const name = document.getElementById('name').value.trim();
   if (!name) {
-    document.getElementById('nameError').textContent = 'Name is required.';
+    showError('name-error', 'Name is required.');
     isValid = false;
   }
 
-  // Validate Email
+  // Email validation
   const email = document.getElementById('email').value.trim();
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    document.getElementById('emailError').textContent = 'Please enter a valid email.';
+    showError('email-error', 'Please enter a valid email address.');
     isValid = false;
   }
 
-  // Validate Password
+  // Password validation
   const password = document.getElementById('password').value.trim();
-  if (password.length < 6) {
-    document.getElementById('passwordError').textContent = 'Password must be at least 6 characters.';
+  if (password.length < 8) {
+    showError('password-error', 'Password must be at least 8 characters long.');
     isValid = false;
   }
 
-  // Show success message if all fields are valid
+  // If all fields are valid, show success message
   if (isValid) {
-    document.getElementById('formResult').textContent = 'Form submitted successfully!';
+    alert('Form submitted successfully!');
   }
 });
+
+function showError(elementId, message) {
+  const errorElement = document.getElementById(elementId);
+  errorElement.textContent = message;
+}
+
+function clearErrors() {
+  const errorElements = document.querySelectorAll('.error-message');
+  errorElements.forEach(error => {
+    error.textContent = '';
+  });
+}
