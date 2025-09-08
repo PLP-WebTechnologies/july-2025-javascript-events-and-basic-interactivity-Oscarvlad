@@ -1,34 +1,77 @@
+/* Default light mode */
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 20px;
   line-height: 1.6;
 }
 
-section {
-  margin-bottom: 30px;
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #333333;
+  color: #ffffff;
 }
 
+/* Button styling */
 button {
-  padding: 10px 15px;
-  margin-top: 10px;
+  margin: 10px 0;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.hidden {
-  display: none;
+button:hover {
+  background-color: #0056b3;
 }
 
-.error {
+/* FAQ section */
+.faq-item {
+  margin-bottom: 15px;
+}
+
+.faq-question {
+  font-size: 1rem;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.faq-answer {
+  display: none; /* Answers are hidden by default */
+  margin-left: 20px;
+  padding: 10px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+}
+
+/* Form styling */
+form {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.error-message {
   color: red;
-  font-size: 2px;
-}
-
-#hoverText:hover {
-  color: blue;
-  font-weight: bold;
-}
-
-body.dark-mode {
-  background-color: #333;
-  color: #fff;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  display: block;
 }
