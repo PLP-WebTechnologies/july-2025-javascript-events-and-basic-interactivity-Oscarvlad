@@ -7,58 +7,45 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Interactive Web Pages with JavaScript</h1>
+  <h1>Interactive Web Page</h1>
 
-  <!-- Part 1: Event Handling -->
-  <section>
-    <h2>Part 1: Event Handling</h2>
-    <button id="toggleModeBtn">Toggle Light/Dark Mode</button>
-    <p id="hoverText">Hover over me!</p>
-  </section>
+  <!-- Part 1: Change Background Color -->
+  <button id="changeBackground">Change Background Color</button>
 
-  <!--Part 2: Interactive Features -->
-  <section>
-    <h2>Part 2: Interactive Features</h2>
+  <!-- Part 2: Feature 1 - Light/Dark Mode Toggle -->
+  <div id="theme-toggle-container">
+    <button id="themeToggle">Toggle Light/Dark Mode</button>
+  </div>
 
-    <!-- Feature 1: Counter Game -->
-    <div>
-      <h3>Counter Game</h3>
-      <p>Click the button to increase the counter:</p>
-      <button id="incrementBtn">Increment</button>
-      <p>Count: <span id="counter">0</span></p>
+  <!-- Part 2: Feature 2 - Collapsible FAQ Section -->
+  <div id="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <button class="faq-question">What is JavaScript?</button>
+      <p class="faq-answer">JavaScript is a programming language used to make web pages interactive.</p>
     </div>
-
-    <!-- Feature 2: Collapsible FAQ Section -->
-    <div>
-      <h3>Collapsible FAQ</h3>
-      <button id="faqToggleBtn">Toggle FAQ</button>
-      <div id="faqContent" class="hidden">
-        <p><strong>Q:</strong> What is JavaScript?</p>
-        <p><strong>A:</strong> JavaScript is a programming language that adds interactivity to websites.</p>
-      </div>
+    <div class="faq-item">
+      <button class="faq-question">Why use JavaScript?</button>
+      <p class="faq-answer">JavaScript allows dynamic behavior on websites without reloading the page.</p>
     </div>
-  </section>
+  </div>
 
-  <!--Part 3: Form Validation -->
-  <section>
-    <h2>Part 3: Form Validation</h2>
-    <form id="userForm">
-      <label for="name">Name:</label>
-      <input type="text" id="name" placeholder="Enter your name" required>
-      <small id="nameError" class="error"></small>
+  <!-- Part 3: Form Validation -->
+  <form id="signup-form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <span class="error-message" id="name-error"></span>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" placeholder="Enter your email" required>
-      <small id="emailError" class="error"></small>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <span class="error-message" id="email-error"></span>
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" placeholder="Enter your password" required>
-      <small id="passwordError" class="error"></small>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <span class="error-message" id="password-error"></span>
 
-      <button type="submit">Submit</button>
-    </form>
-    <p id="formResult"></p>
-  </section>
+    <button type="submit">Sign Up</button>
+  </form>
 
   <script src="script.js"></script>
 </body>
